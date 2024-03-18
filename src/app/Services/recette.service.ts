@@ -9,7 +9,7 @@ import {RecetteDTO} from "../Model/recette-dto";
 })
 export class RecetteService {
 
-  private readonly baseUrl = 'http://localhost:8222/api/recettes'; // Mettez votre URL de base ici
+  private readonly baseUrl = 'http://localhost:8068/recettes'; // Mettez votre URL de base ici
 
   constructor(private http: HttpClient) { }
 
@@ -32,5 +32,9 @@ export class RecetteService {
   deleteRecette(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
-}
-
+  findAllByIdUtilisateur(id: number): Observable<RecetteDTO[]> {
+    return this.http.get<RecetteDTO[]>(`${this.baseUrl}/recetteByUtilisateur/${id}`);
+  }
+ findAllByIdVille(id: number): Observable<RecetteDTO[]> {
+  return this.http.get<RecetteDTO[]>(`${this.baseUrl}/recetteByVille/${id}`);
+}}

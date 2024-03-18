@@ -16,9 +16,22 @@
     </div>
   </div>
 </div>
+<div style="align-content: center">
+  <div class="text-center wow bounceInUp mb-5" data-wow-delay="0.1s">
+    <form class="d-inline-flex justify-content-center" (keyup.enter)="searchRecetteByVille()">
+      <div class="nav nav-pills" id="pills-tab" role="tablist">
+        <div class="input-group">
+          <p class="text-muted" style="margin-right: 100px; float: right">Consulter les recettes préférées par ville</p>
+          <input type="text" class="form-control" style="width: 400px;" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" [(ngModel)]="nomVille" [ngModelOptions]="{standalone: true}">
+          <div class="input-group-append" style="align-items: center;margin-left: 50px">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="searchRecetteByVille()">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 <!-- Hero End -->
-
-
 <!-- About Satrt -->
 <div *ngFor="let restorant of restorants">
   <div class="container-fluid py-6">
@@ -54,3 +67,4 @@
   </div>
 </div>
 <!-- About End -->
+

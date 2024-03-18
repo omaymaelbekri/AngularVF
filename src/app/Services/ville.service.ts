@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {VilleDTO} from "../Model/ville-dto";
 import {RestorantDto} from "../Model/restorant-dto";
 import {RecetteDTO} from "../Model/recette-dto";
@@ -10,7 +10,7 @@ import {RecetteDTO} from "../Model/recette-dto";
   providedIn: 'root'
 })
 export class VilleService {
-  private apiUrl = 'http://localhost:8222/api/villes'; // Assurez-vous d'ajuster l'URL en fonction de votre configuration backend
+  private apiUrl = 'http://localhost:8065/villes'; // Assurez-vous d'ajuster l'URL en fonction de votre configuration backend
 
   constructor(private http: HttpClient) { }
 
@@ -45,6 +45,16 @@ export class VilleService {
   findAllRecetteByIdville(id: number): Observable<RecetteDTO[]> {
     const url = `${this.apiUrl}/recette/${id}`;
     return this.http.get<RecetteDTO[]>(url);
+  }
+
+  getAllVilleByNom(nom: string): Observable<VilleDTO> {
+    const url = `${this.apiUrl}/nom/${nom}`;
+    return this.http.get<VilleDTO>(url)
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
   }
 }
 
